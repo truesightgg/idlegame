@@ -35,7 +35,7 @@
 //   },
 // });
 import React, { Component } from 'react';
-import { Alert, AppRegistry, Button, StyleSheet, View } from 'react-native';
+import { Alert, AppRegistry, Button, StyleSheet, View, Text } from 'react-native';
 
 class Points {
   constructor(value) {
@@ -49,23 +49,38 @@ class Points {
 
 const p = new Points(0);
 
-export default class ButtonBasics extends Component {
+
+
+export default class reactApp extends Component {
+  constructor() {
+   super()
+    this.state = {
+      myPoints: "0"
+    }
+  }
+  _updateText = () => {
+    p.addPoints(1);
+    this.setState({myText: p.value.toString})
+  }
   _onPressButton() {
     Alert.alert('You tapped the button!')
   }
-  _addPoints() {
-    p.addPoints(1)
-    Alert.alert(p.value.toString())
-  }
+
 
 
 
   render() {
     return (
+
       <View style={styles.container}>
+        <View>
+        <Text>
+        {p.value}
+        </Text>
+        </View>
         <View style={styles.buttonContainer}>
           <Button
-            onPress={this._addPoints}
+            onPress={this._updateText}
             title="Press Me"
           />
         </View>
