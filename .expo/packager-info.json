@@ -1,9 +1,9 @@
 {
   "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://z5-hbi.anonymous.idlegame.exp.direct",
-  "packagerNgrokUrl": "https://packager.z5-hbi.anonymous.idlegame.exp.direct",
-  "ngrokPid": 31420,
+  "expoServerNgrokUrl": "https://m9-myx.anonymous.idlegame.exp.direct",
+  "packagerNgrokUrl": "https://packager.m9-myx.anonymous.idlegame.exp.direct",
+  "ngrokPid": 33944,
   "devToolsPort": 19002,
   "packagerPort": 19001,
-  "packagerPid": 29028
+  "packagerPid": 26856
 }
