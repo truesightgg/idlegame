@@ -6,19 +6,46 @@ import { Alert, AppRegistry, Button, StyleSheet, View, Text } from 'react-native
 
 export default class reactApp extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
-    coins: 0
+    coins: 0,
+    active_generation_value: 1,
+    passive_generation_value: 1
     }
-    this.addCoin = this.addCoin.bind(this)
-    setInterval(this.addCoin, 1000)
+    this.add_coin = this.add_coin.bind(this)
+    setInterval(this.add_passive_generation, 1000)
   }
 
-  addCoin() {
+  add_coin = () => {
     this.setState(state => ({
-      coins: state.coins + 1
-    }))
+      coins: state.coins + state.active_generation_value
+    })
+  )
   }
+
+  add_passive_generation = () => {
+    this.setState(state => ({
+      coins: state.coins + state.passive_generation_value
+    })
+  )
+  }
+
+  add_active_generation_value = () => {
+    this.setState(state => ({
+      active_generation_value: state.active_generation_value +1
+    })
+  )
+  }
+
+  add_passive_generation_value = () => {
+    this.setState(state => ({
+      passive_generation_value: state.passive_generation_value +1
+    })
+  )
+  }
+
+
+
 
 
 
@@ -30,13 +57,25 @@ export default class reactApp extends Component {
       <View style={styles.container}>
         <View>
         <Text>
-        {this.state.coins.toString()}
+        {this.state.coins}
         </Text>
         </View>
         <View style={styles.buttonContainer}>
           <Button
-            onPress={this.addCoin}
+            onPress={this.add_coin}
             title="Press Me"
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={this.add_active_generation_value}
+            title="Add Click Value"
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={this.add_passive_generation_value}
+            title="Add Passive Generation"
           />
         </View>
       </View>
