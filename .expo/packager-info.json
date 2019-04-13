@@ -2,8 +2,8 @@
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://m9-myx.anonymous.idlegame.exp.direct",
   "packagerNgrokUrl": "https://packager.m9-myx.anonymous.idlegame.exp.direct",
-  "ngrokPid": 40860,
+  "ngrokPid": 41280,
   "devToolsPort": 19002,
-  "packagerPort": null,
-  "packagerPid": null
+  "packagerPort": 19001,
+  "packagerPid": 20108
 }
