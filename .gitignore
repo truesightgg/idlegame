@@ -1,3 +1,4 @@
-.expo/
-assets/
-node_modules/
+.expo
+__generated__
+assets
+node_modules
