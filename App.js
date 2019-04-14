@@ -5,8 +5,11 @@ import {
   Button,
   StyleSheet,
   View,
-  Text
+  Text,
+  JSON,
+  FlatList
 } from "react-native";
+import { getUserInfo } from "./src/services/fetch_data.js";
 
 export default class reactApp extends Component {
   constructor() {
@@ -14,7 +17,8 @@ export default class reactApp extends Component {
     this.state = {
       coins: 0,
       active_generation_value: 1,
-      passive_generation_value: 1
+      passive_generation_value: 1,
+      movies: []
     };
 
     setInterval(this.add_passive_generation, 1000);
@@ -44,6 +48,39 @@ export default class reactApp extends Component {
     }));
   };
 
+  get_movies = () => {
+    return fetch('https://facebook.github.io/react-native/movies.json')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState(state => ({
+          movies: responseJson.movies
+        }));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  // handleSubmit = () => {
+  //   getUserInfo(this.state.username).then(res => {
+  //     if (res.message === "Not Found") {
+  //       this.setState({
+  //         error: "User not found"
+  //       });
+  //     } else {
+  //       this.props.navigator.push({
+  //         title: res.name || "No Title",
+  //         passProps: { userInfo: res },
+  //         component: DashboardComponent
+  //       });
+  //       this.setState({
+  //         error: false,
+  //         username: ""
+  //       });
+  //     }
+  //   });
+  // }
+
   render() {
     return (
       <View style={styles.container}>
@@ -65,6 +102,19 @@ export default class reactApp extends Component {
             title="Add Passive Generation"
           />
         </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={this.get_movies}
+            title="Get user movies"
+          />
+        </View>
+        <FlatList
+          data={this.state.movies}
+          renderItem={({ item }) => <Text>{item.title}</Text>}
+          keyExtractor={(item, index) => index}/>
+        // <View>
+        //   <Text>{this.state.movies}</Text>
+        // </View>
       </View>
     );
   }
@@ -74,6 +124,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center"
+  },
+  MainContainer: {
+  flex: 1,
+  margin: 10
   },
   buttonContainer: {
     margin: 20
